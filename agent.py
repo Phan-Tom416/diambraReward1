@@ -1,58 +1,34 @@
-import os
-import yaml
-import json
+#!/usr/bin/env python3
+import diambra.arena
+from diambra.arena import SpaceTypes, Roles, EnvironmentSettings
+from diambra.arena.utils.gym_utils import available_games
+import random
 import argparse
-from diambra.arena import Roles, SpaceTypes, load_settings_flat_dict
-from diambra.arena.stable_baselines3.make_sb3_env import make_sb3_env, EnvironmentSettings, WrappersSettings
-from stable_baselines3 import PPO
 
-"""This is an example agent based on stable baselines 3.
-
-Usage:
-diambra run python stable_baselines3/agent.py --cfgFile $PWD/stable_baselines3/cfg_files/doapp/sr6_128x4_das_nc.yaml --trainedModel "model_name"
-"""
-
-def main(cfg_file, trained_model, test=False):
-    # Read the cfg file
-    yaml_file = open(cfg_file)
-    params = yaml.load(yaml_file, Loader=yaml.FullLoader)
-    print("Config parameters = ", json.dumps(params, sort_keys=True, indent=4))
-    yaml_file.close()
-
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    model_folder = os.path.join(base_path, params["folders"]["parent_dir"], params["settings"]["game_id"],
-                                params["folders"]["model_name"], "model")
+def main(game_id="random", test=False):
+    game_dict = available_games(False)
+    if game_id == "random":
+        game_id = random.sample(game_dict.keys(),1)[0]
+    else:
+        game_id = opt.gameId if opt.gameId in game_dict.keys() else random.sample(game_dict.keys(),1)[0]
 
     # Settings
-    params["settings"]["action_space"] = SpaceTypes.DISCRETE if params["settings"]["action_space"] == "discrete" else SpaceTypes.MULTI_DISCRETE
-    settings = load_settings_flat_dict(EnvironmentSettings, params["settings"])
-    settings.role = Roles.P1
+    settings = EnvironmentSettings()
+    settings.step_ratio = 6
+    settings.frame_shape = (128, 128, 1)
+    settings.role = Roles.P2
+    settings.difficulty = 4
+    settings.action_space = SpaceTypes.MULTI_DISCRETE
 
-    # Wrappers Settings
-    wrappers_settings = load_settings_flat_dict(WrappersSettings, params["wrappers_settings"])
-    wrappers_settings.normalize_reward = False
-
-    # Create environment
-    env, num_envs = make_sb3_env(settings.game_id, settings, wrappers_settings, no_vec=True)
-    print("Activated {} environment(s)".format(num_envs))
-
-    # Load the trained agent
-    model_path = os.path.join(model_folder, trained_model)
-    agent = PPO.load(model_path)
-
-    # Print policy network architecture
-    print("Policy architecture:")
-    print(agent.policy)
-
-    obs, info = env.reset()
+    env = diambra.arena.make(game_id, settings)
+    observation, info = env.reset()
 
     while True:
-        action, _ = agent.predict(obs, deterministic=False)
-
-        obs, reward, terminated, truncated, info = env.step(action.tolist())
+        action = env.get_no_op_action()
+        observation, reward, terminated, truncated, info = env.step(action)
 
         if terminated or truncated:
-            obs, info = env.reset()
+            observation, info = env.reset()
             if info["env_done"] or test is True:
                 break
 
@@ -64,11 +40,9 @@ def main(cfg_file, trained_model, test=False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--cfgFile", type=str, required=True, help="Configuration file")
-    parser.add_argument("--trainedModel", type=str, default="model", help="Model checkpoint")
-    parser.add_argument("--test", type=int, default=0, help="Test mode")
+    parser.add_argument('--gameId', type=str, default="random", help='Game ID')
+    parser.add_argument('--test', type=int, default=0, help='Test mode')
     opt = parser.parse_args()
     print(opt)
 
-    main(opt.cfgFile, opt.trainedModel, bool(opt.test))
-
+    main(opt.gameId, bool(opt.test))
