@@ -61,7 +61,7 @@ policy_kwargs:
 ppo_settings:
 
   gamma: 0.99
-  model_checkpoint: "0M"
+  model_checkpoint: "20480000M"
   learning_rate: [2.5e-4, 2.5e-6] # To start
   #learning_rate: [5.0e-5, 2.5e-6] # Fine Tuning
   clip_range: [0.15, 0.025] # To start
@@ -72,4 +72,4 @@ ppo_settings:
   n_epochs: 4
   n_steps: 256
   autosave_freq: 1280000
-  time_steps: 10240000
+  time_steps: 0
