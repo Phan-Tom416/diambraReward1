@@ -38,7 +38,7 @@ def main(cfg_file):
     # Policy param
     policy_kwargs = params["policy_kwargs"]
 
-    # PPO settings
+    # PPO settings 
     ppo_settings = params["ppo_settings"]
     gamma = ppo_settings["gamma"]
     model_checkpoint = ppo_settings["model_checkpoint"]
