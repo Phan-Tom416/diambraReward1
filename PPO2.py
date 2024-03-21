@@ -46,7 +46,7 @@ def main(cfg_file):
     learning_rate = linear_schedule(ppo_settings["learning_rate"][0], ppo_settings["learning_rate"][1])
     clip_range = linear_schedule(ppo_settings["clip_range"][0], ppo_settings["clip_range"][1])
     clip_range_vf = clip_range
-    batch_size = ppo_settings["batch_size"]
+    batch_size = ppo_settings["batch_size"] 
     n_epochs = ppo_settings["n_epochs"]
     n_steps = ppo_settings["n_steps"]
 
