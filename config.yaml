@@ -11,9 +11,9 @@ settings:
   frame_shape: !!python/tuple [128,128,1]
   continue_game: 0.9
   action_space: "multi_discrete"
-  attack_but_combination: true 
-  char_outfits: 2
-  player: "Random"
+  #attack_but_combination: true 
+  #char_outfits: 2
+  #player: "Random"
   show_final: true
   #hardcore: true
 
