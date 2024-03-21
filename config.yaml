@@ -1,5 +1,5 @@
 folders:
-  parent_dir: "./agents/"
+  parent_dir: "./"
   model_name: "agent"
 
 settings:
