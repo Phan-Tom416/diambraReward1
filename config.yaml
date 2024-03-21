@@ -30,21 +30,21 @@ wrappers_settings:
   scale: true
   exclude_image_scaling: true
   flatten: true
-  filter_keys:  ["stage",
-                 "P1_ownHealth",
-                 "P1_oppHealth",
-                 "P1_ownSide",
-                 "P1_oppSide",
-                 "P1_oppChar",
-                 "P1_actions_move",
-                 "P1_actions_attack",
-                 "P1_oppStunned",
-                 "P1_oppStunBar",
-                 "P1_ownSuperBar",
-                 "P1_ownSuperCount",
-                 "P1_oppSuperBar",
-                 "P1_oppSuperCount"
-                ]
+  #filter_keys:  ["stage",
+                # "P1_ownHealth",
+               #  "P1_oppHealth",
+              #   "P1_ownSide",
+             #    "P1_oppSide",
+            #     "P1_oppChar",
+           #      "P1_actions_move",
+          #       "P1_actions_attack",
+         #        "P1_oppStunned",
+        #         "P1_oppStunBar",
+       #          "P1_ownSuperBar",
+      #           "P1_ownSuperCount",
+     #            "P1_oppSuperBar",
+    #             "P1_oppSuperCount"
+   #             ]
   #superbar_wrapper: true  
   #super_hit_wrapper: true
   #opp_super_hit_wrapper: true
