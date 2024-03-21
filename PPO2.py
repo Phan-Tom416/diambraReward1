@@ -60,7 +60,7 @@ def main(cfg_file):
                     tensorboard_log=tensor_board_folder)
     else:
         # Load the trained agent
-        agent = PPO.load(os.path.join("/sources/", model_checkpoint), env=env,
+        agent = PPO.load(os.path.join("/sources/agents/", model_checkpoint), env=env,
                          gamma=gamma, learning_rate=learning_rate, clip_range=clip_range,
                          clip_range_vf=clip_range_vf, policy_kwargs=policy_kwargs,
                          tensorboard_log=tensor_board_folder)
