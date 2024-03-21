@@ -6,7 +6,7 @@ settings:
   game_id: "sfiii3n"
   characters: 'Ryu'
   super_art: 2
-  difficulty: 8
+  difficulty: 8 
   step_ratio: 3
   frame_shape: !!python/tuple [128,128,1]
   continue_game: 0.9
