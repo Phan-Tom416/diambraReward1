@@ -148,7 +148,7 @@ class EnvironmentSettings2P(EnvironmentSettings):
 
 @dataclass
 class WrappersSettings:
-
+ 
     no_op_max: int = 0
     sticky_actions: int = 1
     clip_rewards: bool = False
