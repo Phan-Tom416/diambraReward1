@@ -14,10 +14,10 @@ def main(game_id="random", test=False):
 
     # Settings
     settings = EnvironmentSettings()
-    settings.step_ratio = 6
+    settings.step_ratio = 3
     settings.frame_shape = (128, 128, 1)
     settings.role = Roles.P2
-    settings.difficulty = 4
+    settings.difficulty = 8
     settings.action_space = SpaceTypes.MULTI_DISCRETE
 
     env = diambra.arena.make(game_id, settings)

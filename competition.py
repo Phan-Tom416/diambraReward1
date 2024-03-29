@@ -36,9 +36,27 @@ def main(cfg_file, trained_model, test=False):
     env, num_envs = make_sb3_env(settings.game_id, settings, wrappers_settings, no_vec=True)
     print("Activated {} environment(s)".format(num_envs))
 
+    # Policy param
+    policy_kwargs = params["policy_kwargs"]
+
+    # PPO settings
+    ppo_settings = params["ppo_settings"]
+    gamma = ppo_settings["gamma"]
+    model_checkpoint = ppo_settings["model_checkpoint"]
+
+    learning_rate = linear_schedule(ppo_settings["learning_rate"][0], ppo_settings["learning_rate"][1])
+    clip_range = linear_schedule(ppo_settings["clip_range"][0], ppo_settings["clip_range"][1])
+    clip_range_vf = clip_range
+    batch_size = ppo_settings["batch_size"]
+    n_epochs = ppo_settings["n_epochs"]
+    n_steps = ppo_settings["n_steps"]
+
     # Load the trained agent
     model_path = os.path.join(model_folder, trained_model)
-    agent = PPO.load("/sources/agent") 
+    agent = PPO.load(os.path.join(model_folder, model_checkpoint), env=env,
+                         gamma=gamma, learning_rate=learning_rate, clip_range=clip_range,
+                         clip_range_vf=clip_range_vf, policy_kwargs=policy_kwargs,
+                         tensorboard_log=tensor_board_folder)
 
     # Print policy network architecture
     print("Policy architecture:")
