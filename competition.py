@@ -68,7 +68,7 @@ def main(cfg_file, trained_model, test=False):
  
     obs, info = env.reset()
 
-    for i in range(10):
+    for i in range(1):
       while True:
         action, _ = agent.predict(obs, deterministic=False)
 
