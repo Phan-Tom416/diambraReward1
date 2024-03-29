@@ -61,7 +61,7 @@ def main(cfg_file, trained_model, test=False):
     # Print policy network architecture
     print("Policy architecture:")
     print(agent.policy)
-
+ 
     obs, info = env.reset()
 
     while True:
