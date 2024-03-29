@@ -6,7 +6,7 @@ settings:
   game_id: "sfiii3n"
   characters: 'Ryu'
   super_art: 2
-  difficulty: 8
+  difficulty: 4
   step_ratio: 3
   frame_shape: !!python/tuple [128,128,1]
   continue_game: 0.0
@@ -65,7 +65,7 @@ policy_kwargs:
 ppo_settings:
 
   gamma: 0.99
-  model_checkpoint: "20480000"
+  model_checkpoint: "204800"
   learning_rate: [2.5e-4, 2.5e-6] # To start
   #learning_rate: [5.0e-5, 2.5e-6] # Fine Tuning
   clip_range: [0.15, 0.025] # To start
