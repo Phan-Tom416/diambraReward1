@@ -56,14 +56,7 @@ wrappers_settings:
                 'frame',
                 'stage',
                 'timer']
-  super_bar_wrapper: true  
-  super_hit_wrapper: true
-  opp_super_hit_wrapper: true
-  time_penalty_wrapper: true
-  win_wrapper: true
-  no_hit_wrapper: true
-  #custom_stun_wrapper: true
-  #block_wrapper: true
+
   
 policy_kwargs:
   net_arch: [{vf:[32,32,32],pi:[64,64,64]}]
