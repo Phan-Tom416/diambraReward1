@@ -30,7 +30,7 @@ def main(cfg_file, trained_model, test=False):
     settings.role = Roles.P1
     settings.step_ratio = 3
     settings.frame_shape = (128, 128, 1)
-    settings.difficulty = 8
+    settings.difficulty = 1
     settings.action_space = SpaceTypes.MULTI_DISCRETE
 
     # Wrappers Settings
@@ -44,7 +44,7 @@ def main(cfg_file, trained_model, test=False):
     # Policy param
     policy_kwargs = params["policy_kwargs"]
 
-    # PPO settings6
+    # PPO settings
     ppo_settings = params["ppo_settings"]
     gamma = ppo_settings["gamma"]
     model_checkpoint = ppo_settings["model_checkpoint"]
@@ -68,7 +68,8 @@ def main(cfg_file, trained_model, test=False):
  
     obs, info = env.reset()
 
-    while True:
+    for i in range(10):
+      while True:
         action, _ = agent.predict(obs, deterministic=False)
 
         obs, reward, terminated, truncated, info = env.step(action.tolist())
