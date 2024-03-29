@@ -56,8 +56,7 @@ def main(cfg_file, trained_model, test=False):
     model_path = os.path.join(model_folder, trained_model)
     agent = PPO.load(os.path.join(model_folder, model_checkpoint), env=env,
                          gamma=gamma, learning_rate=learning_rate, clip_range=clip_range,
-                         clip_range_vf=clip_range_vf, policy_kwargs=policy_kwargs,
-                         tensorboard_log=tensor_board_folder)
+                         clip_range_vf=clip_range_vf, policy_kwargs=policy_kwargs)
 
     # Print policy network architecture
     print("Policy architecture:")
