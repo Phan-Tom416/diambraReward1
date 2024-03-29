@@ -59,13 +59,13 @@ wrappers_settings:
 
   
 policy_kwargs:
-  net_arch: [{vf:[32,32,32],pi:[64,64,64]}]
+  #net_arch: [{vf:[32,32,32],pi:[64,64,64]}]
   #net_arch: [{ pi: [64, 64], vf: [32, 32] }]    
-    #net_arch: {vf:[32,32],pi:[64,64]}
+  net_arch: {vf:[32,32],pi:[64,64]}
 ppo_settings:
 
   gamma: 0.99
-  model_checkpoint: "204800"
+  model_checkpoint: "1280000"
   learning_rate: [2.5e-4, 2.5e-6] # To start
   #learning_rate: [5.0e-5, 2.5e-6] # Fine Tuning
   clip_range: [0.15, 0.025] # To start
