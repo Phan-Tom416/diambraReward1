@@ -6,11 +6,11 @@ settings:
   game_id: "sfiii3n"
   characters: 'Ryu'
   super_art: 2
-  difficulty: 4
+  difficulty: 5
   step_ratio: 3
   frame_shape: !!python/tuple [128,128,1]
   continue_game: 1.0
-  action_space: "multi_discrete"
+  action_space: "multi_discrete" 
   #attack_but_combination: true 
   outfits: 2
   #role: None
