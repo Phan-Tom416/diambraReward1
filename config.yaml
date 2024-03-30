@@ -9,7 +9,7 @@ settings:
   difficulty: 4
   step_ratio: 3
   frame_shape: !!python/tuple [128,128,1]
-  continue_game: 0.0
+  continue_game: 1.0
   action_space: "multi_discrete"
   #attack_but_combination: true 
   outfits: 2
