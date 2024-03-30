@@ -28,9 +28,10 @@ def main(cfg_file, trained_model, test=False):
     params["settings"]["action_space"] = SpaceTypes.DISCRETE if params["settings"]["action_space"] == "discrete" else SpaceTypes.MULTI_DISCRETE
     settings = load_settings_flat_dict(EnvironmentSettings, params["settings"])
     settings.role = Roles.P1
+    settings.step_ratio = 3
     settings.stepRatio = 3
     settings.frame_shape = (128, 128, 1)
-    settings.difficulty = 1
+    settings.difficulty = 8
     settings.action_space = SpaceTypes.MULTI_DISCRETE
 
     # Wrappers Settings
