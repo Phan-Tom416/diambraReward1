@@ -6,11 +6,11 @@ settings:
   game_id: "sfiii3n"
   characters: 'Ryu'
   super_art: 2
-  difficulty: 5
-  step_ratio: 3
+  difficulty: 8
+  step_ratio: 1
   frame_shape: !!python/tuple [128,128,1]
   continue_game: 0.0
-  action_space: "multi_discrete" 
+  action_space: "multi_discrete"
   #attack_but_combination: true 
   outfits: 2
   #role: None
@@ -22,7 +22,7 @@ settings:
 wrappers_settings:
   #hwc_obs_resize: !!python/tuple [128,128,3]
   normalize_reward: true
-  no_attack_buttons_combinations: false
+  no_attack_buttons_combinations: true
   stack_frames: 4
   dilation: 1
   stack_actions: 6
@@ -33,6 +33,7 @@ wrappers_settings:
   exclude_image_scaling: true
   flatten: true
   role_relative: true
+  #repeat_action: 1
   filter_keys:  ['own_character', 
                 'own_health',
                 'own_side',
@@ -56,12 +57,19 @@ wrappers_settings:
                 'frame',
                 'stage',
                 'timer']
-
+  super_bar_wrapper: true  
+  super_hit_wrapper: true
+  opp_super_hit_wrapper: true
+  time_penalty_wrapper: true
+  win_wrapper: true
+  no_hit_wrapper: true
+  #custom_stun_wrapper: true
+  #block_wrapper: true
   
 policy_kwargs:
-  #net_arch: [{vf:[32,32,32],pi:[64,64,64]}]
+  #net_arch: {vf:[32,32,32],pi:[64,64,64]}
   #net_arch: [{ pi: [64, 64], vf: [32, 32] }]    
-  net_arch: {vf:[32,32],pi:[64,64]}
+    net_arch: {vf:[32,32],pi:[64,64]}
 ppo_settings:
 
   gamma: 0.99
