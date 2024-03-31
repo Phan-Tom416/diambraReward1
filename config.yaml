@@ -27,7 +27,7 @@ wrappers_settings:
   dilation: 1
   stack_actions: 6
   add_last_action: true
-  normalization_factor: 0.7
+  normalization_factor: 10.0
   clip_reward: false
   scale: true
   exclude_image_scaling: true
