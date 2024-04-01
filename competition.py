@@ -6,6 +6,7 @@ from diambra.arena import Roles, SpaceTypes, load_settings_flat_dict
 from diambra.arena.stable_baselines3.make_sb3_env import make_sb3_env, EnvironmentSettings, WrappersSettings
 from diambra.arena.stable_baselines3.sb3_utils import linear_schedule, AutoSave
 from stable_baselines3 import PPO
+from sb3_contrib import TRPO
 
 """This is an example agent based on stable baselines 3.
 
