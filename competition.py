@@ -6,7 +6,7 @@ from diambra.arena import Roles, SpaceTypes, load_settings_flat_dict
 from diambra.arena.stable_baselines3.make_sb3_env import make_sb3_env, EnvironmentSettings, WrappersSettings
 from diambra.arena.stable_baselines3.sb3_utils import linear_schedule, AutoSave
 from stable_baselines3 import PPO
-from sb3_contrib import TRPO
+#from sb3_contrib import TRPO
 
 """This is an example agent based on stable baselines 3.
 
@@ -60,13 +60,13 @@ def main(cfg_file, trained_model, test=False):
 
     # Load the trained agent
     model_path = os.path.join(model_folder, trained_model)
-    #agent = PPO.load("/sources/agent.zip", env=env,
-    #                     gamma=gamma, learning_rate=learning_rate, clip_range=clip_range,
-    #                     clip_range_vf=clip_range_vf, policy_kwargs=policy_kwargs)
-    agent = TRPO.load(os.path.join(model_folder, model_checkpoint), env=env,
-             gamma=gamma, learning_rate=learning_rate,
-             policy_kwargs=policy_kwargs,
-             tensorboard_log=tensor_board_folder)
+    agent = PPO.load("/sources/agent.zip", env=env,
+                         gamma=gamma, learning_rate=learning_rate, clip_range=clip_range,
+                         clip_range_vf=clip_range_vf, policy_kwargs=policy_kwargs)
+    #agent = TRPO.load(os.path.join(model_folder, model_checkpoint), env=env,
+    #         gamma=gamma, learning_rate=learning_rate,
+    #         policy_kwargs=policy_kwargs,
+    #         tensorboard_log=tensor_board_folder)
 
     # Print policy network architecture
     print("Policy architecture:")
