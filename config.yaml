@@ -67,9 +67,9 @@ wrappers_settings:
   #block_wrapper: true
   
 policy_kwargs:
-  net_arch: {vf:[32,32,32],pi:[64,64,64]}
+ #net_arch: {vf:[32,32,32],pi:[64,64,64]}
   #net_arch: [{ pi: [64, 64], vf: [32, 32] }]    
-   #net_arch: {vf:[32,32],pi:[64,64]}
+   net_arch: {vf:[32,32],pi:[64,64]}
 ppo_settings:
 
   gamma: 0.99
