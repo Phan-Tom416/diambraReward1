@@ -63,9 +63,9 @@ def main(cfg_file, trained_model, test=False):
     #                     gamma=gamma, learning_rate=learning_rate, clip_range=clip_range,
     #                     clip_range_vf=clip_range_vf, policy_kwargs=policy_kwargs)
     agent = TRPO.load(os.path.join(model_folder, model_checkpoint), env=env,
-                         gamma=gamma, learning_rate=learning_rate,
-                         policy_kwargs=policy_kwargs,
-                         tensorboard_log=tensor_board_folder)
+             gamma=gamma, learning_rate=learning_rate,
+             policy_kwargs=policy_kwargs,
+             tensorboard_log=tensor_board_folder)
 
     # Print policy network architecture
     print("Policy architecture:")
