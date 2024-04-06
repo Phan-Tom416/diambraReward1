@@ -1,6 +1,6 @@
 folders:
   parent_dir: "./results/"
-  model_name: "sr6_128x4_das_ppo_noHit"
+  model_name: "sr6_128x4_das_trpo_2"
 
 settings:
   game_id: "sfiii3n"
@@ -12,7 +12,7 @@ settings:
   continue_game: 0.0
   action_space: "multi_discrete"
   #attack_but_combination: true 
-  outfits: 2
+  outfits: 1
   #role: None
   #player: "Random"
   show_final: true
@@ -21,11 +21,13 @@ settings:
 
 wrappers_settings:
   #hwc_obs_resize: !!python/tuple [128,128,3]
+  #frame_shape: !!python/tuple [384,224,0]
   normalize_reward: true
   no_attack_buttons_combinations: true
   stack_frames: 1
   dilation: 1
   stack_actions: 6
+  
   add_last_action: true
   normalization_factor: 10.0
   clip_reward: false
@@ -33,7 +35,7 @@ wrappers_settings:
   exclude_image_scaling: true
   flatten: true
   role_relative: true
-  #repeat_action: 1
+  repeat_action: 1
   filter_keys:  ['own_character', 
                 'own_health',
                 'own_side',
@@ -63,23 +65,26 @@ wrappers_settings:
   #time_penalty_wrapper: true
   #win_wrapper: true
   #no_hit_wrapper: true
+  #distance_wrapper: true
   #custom_stun_wrapper: true
   #block_wrapper: true
   
 policy_kwargs:
- #net_arch: {vf:[32,32,32],pi:[64,64,64]}
+  #net_arch: {vf:[32,32,32],pi:[64,64,64]}
   #net_arch: [{ pi: [64, 64], vf: [32, 32] }]    
-   net_arch: {vf:[32,32],pi:[64,64]}
+  #net_arch: [64,64]
+  net_arch: {vf:[32,32],pi:[64,64]}
 ppo_settings:
 
+
   gamma: 0.99
-  model_checkpoint: "0"
+  model_checkpoint: "1024000"   
   learning_rate: [2.5e-4, 2.5e-6] # To start
   #learning_rate: [5.0e-5, 2.5e-6] # Fine Tuning
   clip_range: [0.15, 0.025] # To start
   #clip_range: [0.075, 0.025] # Fine Tuning
   batch_size:
-    256 # 8 #nminibatches gave different batch size depending on
+    2048 # 8 #nminibatches gave different batch size depending on
     # the number of environments: batch_size = (n_steps * n_envs) // nminibatches
   n_epochs: 4
   n_steps: 256
