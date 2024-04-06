@@ -31,7 +31,7 @@ def main(cfg_file, trained_model, test=False):
     settings.role = Roles.P1
     settings.step_ratio = 1
     settings.stepRatio = 1
-    settings.frame_shape = (224, 224, 1)
+    settings.frame_shape = (224, 224, 1) 
     settings.difficulty = 8
     settings.action_space = SpaceTypes.MULTI_DISCRETE
 
